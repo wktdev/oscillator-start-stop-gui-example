@@ -27,13 +27,13 @@ var audioContext = new AudioContext;
 
 
 var osc1 = audioContext.createOscillator();
-osc1.type = "sawtooth";
-osc1.frequency.value = 100;
+osc1.type = "sawtooth";                        /* set to sawtooth but plays the default...which is sine ( parameters are ignored) */
+osc1.frequency.value = 1000;
 
 
 	
 
-$(".start-osc-1").on("click",function(){      /* You must always create new nodes and connections for each play of oscillator */
+$(".start-osc-1").on("click",function(){      /* You must always create new nodes, parameters and connections for each play of oscillator */
 	osc1 = audioContext.createOscillator();   /* If we had any connecting nodes they would need to be recreated here as well ( such as gain nodes )*/
 	osc1.connect(audioContext.destination);
 	osc1.start(audioContext.currentTime);
@@ -46,6 +46,8 @@ $(".stop-osc-1").on("click",function(){
     
      
 })
+
+
 
 
 
