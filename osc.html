@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html >
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/hot-sneaks/jquery-ui.css" type="text/css"> 
+	    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.js" charset="utf-8"></script>
+	</head>
+
+	<body>
+
+<!--HTML-->
+
+<div class="start-osc-1">START OSC 1</div>
+<div class="stop-osc-1">STOP OSC 1</div>
+
+
+<script>
+	
+"use strict"
+
+ 
+
+
+var audioContext = new AudioContext;
+
+
+
+var osc1 = audioContext.createOscillator();
+osc1.type = "sawtooth";
+osc1.frequency.value = 100;
+
+
+	
+
+$(".start-osc-1").on("click",function(){      /* You must always create new nodes and connections for each play of oscillator */
+	osc1 = audioContext.createOscillator();   /* If we had any connecting nodes they would need to be recreated here as well ( such as gain nodes )*/
+	osc1.connect(audioContext.destination);
+	osc1.start(audioContext.currentTime);
+
+})
+
+
+$(".stop-osc-1").on("click",function(){
+     osc1.stop(audioContext.currentTime)
+    
+     
+})
+
+
+
+
+</script>
+
+
+
+
+
+
+
+	</body>
+
+	</html>
